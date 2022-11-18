@@ -32,7 +32,6 @@ function myFunction() {
     id = document.getElementById("select-team").value; 
     console.log(`https://api-football-v1.p.rapidapi.com/v3/players?team=${id}&season=${annee}`);
  
-document.getElementById("team-id").innerHTML = "Vous avez choisi:  " + id;
 
 // apres un changement dans le select d'equipe, je recupere l'id de l'equipe puis je crée le <select> des joueurs
 fetch(`https://api-football-v1.p.rapidapi.com/v3/players?team=${id}&season=${annee}`, options)//39
