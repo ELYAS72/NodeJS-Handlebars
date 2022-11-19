@@ -1,12 +1,11 @@
 
-    
                    
  
     <div class="container">
         <div class="col">
             <div class="row">
 
-               <!-- <input type="text" id="container3"> -->
+               
 
                <select name="team" id="select-team" onchange="myFunction()">
                 <option>Choisir une équipe...</option>
@@ -74,7 +73,7 @@
 let annee = new Date().getFullYear();
 //-------------- generation de la liste des equipes
 let id
-fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?league=61&season=${annee}`, options)
+fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?league=140&season=${annee}`, options)
     
 .then(response => response.json())
 .then((data) => {
@@ -182,4 +181,3 @@ const btn = document.getElementById("btn");
 
     </script>
    
-    

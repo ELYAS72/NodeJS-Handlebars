@@ -29,22 +29,20 @@ app.get('/et-de-trois', (req, res) => {
     res.render('et-de-trois', {'et': true});
 })
 
+app.get('/quatrieme-page', (req, res) => {
+    res.render('quatrieme-page', {'quatrieme-page': true});
+})
 
 
-// const url = 'https://api-football-v1.p.rapidapi.com/v3/timezone';
+app.get('/cinquieme-page', (req, res) => {
+    res.render('cinquieme-page', {'cinquieme-page': true});
+})
 
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     'X-RapidAPI-Key': '6e1aad90b0mshecd4198a099aa6bp1700f7jsn188f5edd4f42',
-//     'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-//   }
-// };
 
-// fetch(url, options)
-// 	.then(res => res.json())
-// 	.then(json => console.log(json))
-// 	.catch(err => console.error('error:' + err));
+app.get('/bundesliga', (req, res) => {
+    res.render('bundesliga', {'bundesliga': true});
+})
+
 
 
 

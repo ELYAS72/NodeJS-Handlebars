@@ -1,5 +1,4 @@
-
-    
+  
                    
  
     <div class="container">
@@ -74,7 +73,7 @@
 let annee = new Date().getFullYear();
 //-------------- generation de la liste des equipes
 let id
-fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?league=61&season=${annee}`, options)
+fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?league=78&season=${annee}`, options)
     
 .then(response => response.json())
 .then((data) => {
@@ -182,4 +181,3 @@ const btn = document.getElementById("btn");
 
     </script>
    
-    
