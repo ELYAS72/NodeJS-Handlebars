@@ -21,21 +21,21 @@ app.get('/', (req, res) => {
     res.render('index', {'index': true});
 })
 
-app.get('/une-autre-page', (req, res) => {
-    res.render('une-autre-page', {'une': true});
+app.get('/equipe-nationale', (req, res) => {
+    res.render('equipe-nationale', {'equipe-nationale': true});
 })
 
-app.get('/et-de-trois', (req, res) => {
-    res.render('et-de-trois', {'et': true});
+app.get('/ligue-1', (req, res) => {
+    res.render('ligue-1', {'ligue-1': true});
 })
 
-app.get('/quatrieme-page', (req, res) => {
-    res.render('quatrieme-page', {'quatrieme-page': true});
+app.get('/laliga', (req, res) => {
+    res.render('laliga', {'laliga': true});
 })
 
 
-app.get('/cinquieme-page', (req, res) => {
-    res.render('cinquieme-page', {'cinquieme-page': true});
+app.get('/seria', (req, res) => {
+    res.render('seria', {'seria': true});
 })
 
 
