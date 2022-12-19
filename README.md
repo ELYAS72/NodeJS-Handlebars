@@ -7,7 +7,7 @@ Si vous souhaitez cloner le projet voici les étapes à suivre :
 
  * Première chose installer Node js sur votre machine, suivez ce lien 👉 : https://nodejs.org/fr/
  * Après ouivrez votre terminal et éxecuter la commande: npm install, pour télécharger les node_modules
- * Ensuite il faudra installer toutes ces packages/librairie en faisant un  "npm i"  👇  : 
+ * Ensuite il faudra installer toutes ces packages/librairie en faisant un  "npm i" suivi des dépendences ci-dessous 👇  : 
  
 express
 dotenv
