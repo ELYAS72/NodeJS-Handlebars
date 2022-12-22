@@ -10,15 +10,20 @@
 let annee = new Date().getFullYear();
 //-------------- generation de la liste des equipes
 let id
-fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?league=39&season=${annee}`, options)
-    
+const url =`https://api-football-v1.p.rapidapi.com/v3/teams?league=39&season=${annee}`
+
+fetch(url, options)
+
+  // récupère les listes d'équipes  
 .then(response => response.json())
 .then((data) => {
     console.log(data.response);
     data.response.forEach(element => {
                 let select= `<select>`  
                 id = document.getElementById("select-team").value; 
-                
+
+                // integre les résultats dans les balises html prédéfinies
+
                 document.getElementById("select-team").innerHTML +=` <option value="${element.team.id}"> ${element.team.name} </option>`;
                 document.getElementById("logo").logo +=` <option value="${element.team.id}"> ${element.team.name} </option>`;
                       select = `</select>` 
@@ -27,7 +32,7 @@ fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?league=39&season=${annee}
       })
 })
 
-
+  // on fait une fonction qui va afficher le choix sélectionner dans la balise select 
 function myFunction() {
     id = document.getElementById("select-team").value; 
     console.log(`https://api-football-v1.p.rapidapi.com/v3/players?team=${id}&season=${annee}`);
