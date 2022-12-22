@@ -1,67 +1,54 @@
-
-                   
- 
-    <div class="container">
-        <div class="col">
-            <div class="row">
-
-               <!-- <input type="text" id="container3"> -->
-
-               <select name="team" id="select-team" onchange="myFunction()">
+<!-- Section permettant de sélectionner l'équipe et le joueur à afficher -->
+<div class="container">
+    <div class="col">
+        <div class="row">
+            <!-- Sélection de l'équipe -->
+            <select name="team" id="select-team" onchange="myFunction()">
                 <option>Choisir une équipe...</option>
-               
-                </select>
-
-                <p id="team-id"></p>
-              
-               <select name="player" id="select-player">
+                <!-- Options générées dynamiquement via une requête API -->
+            </select>
+            <!-- Affichage de l'ID de l'équipe sélectionnée (pour vérification) -->
+            <p id="team-id"></p>
+            <!-- Sélection du joueur -->
+            <select name="player" id="select-player">
                 <option>Choisir un joueur...</option>
-
-               
-               </select>
-
-               
-              <button id="btn"><i class="fa-solid fa-magnifying-glass"></i>RECHERCHER</button>
-            </div>
+                <!-- Options générées dynamiquement via une requête API -->
+            </select>
+            <!-- Bouton de recherche -->
+            <button id="btn"><i class="fa-solid fa-magnifying-glass"></i>RECHERCHER</button>
         </div>
     </div>
+</div>
 
-    <div class="container2">
-
+<!-- Section affichant les informations du joueur sélectionné -->
+<div class="container2">
     <div class="card" style="width: 18rem;">
-        
         <div class="card-body" id="cards">
+            <!-- Affichage de la photo du joueur -->
             <div id="photo"></div>
-
-
-           
-           <img id="img" src="" alt="">
-           <img id="logo" src="" alt="">
-           
-
-            <div id ="name"><strong>Nom:</strong></div>
+            <!-- Affichage de l'image du joueur -->
+            <img id="img" src="" alt="">
+            <!-- Affichage du logo de l'équipe du joueur -->
+            <img id="logo" src="" alt="">
+            <!-- Affichage du nom du joueur -->
             <div id="namme"></div>
-            <div id ="name"><strong>Âge:</strong></div>
+            <!-- Affichage de l'âge du joueur -->
             <div id="age"></div>
-            <div id ="name"><strong>Nationalité:</strong></div>
+            <!-- Affichage de la nationalité du joueur -->
             <div id="nationality"></div>
-            <div id ="name"><strong>Club:</strong></div>
+            <!-- Affichage du club actuel du joueur -->
             <div id="club"></div>
-            <div id ="name"><strong>Poids:</strong></div>
+            <!-- Affichage du poids du joueur -->
             <div id="weight"></div>
-            <div id ="name"><strong>Taille:</strong></div>
+            <!-- Affichage de la taille du joueur -->
             <div id="height"></div>
-            
-            <!-- <div id="img">...</div> -->
-            
-      
-          
         </div>
-      </div>
     </div>
+</div>
 
-    <script>
-        
+<!-- Script principal -->
+<script>
+    // Options de la requête API
     const options = {
         method: 'GET',
         headers: {
@@ -70,114 +57,111 @@
         }
     }
 
-let annee = new Date().getFullYear();
-//-------------- generation de la liste des equipes
-let id
-fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?league=1&season=${annee}`, options)
-    
-.then(response => response.json())
-.then((data) => {
-    console.log(data.response);
-    data.response.forEach(element => {
-                let select= `<select>`  
-                id = document.getElementById("select-team").value; 
-                
-                document.getElementById("select-team").innerHTML +=` <option value="${element.team.id}"> ${element.team.name} </option>`;
-                document.getElementById("logo").logo +=` <option value="${element.team.id}"> ${element.team.name} </option>`;
-                      select = `</select>` 
-                     
-                  
-      })
-})
+    // Récupération de l'année courante
+    let annee = new Date().get
 
+    //-------------- generation de la liste des equipes
+    let id
+    fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?league=1&season=${annee}`, options)
 
-function myFunction() {
-    id = document.getElementById("select-team").value; 
-    console.log(`https://api-football-v1.p.rapidapi.com/v3/players?team=${id}&season=${annee}`);
- 
-
-// apres un changement dans le select d'equipe, je recupere l'id de l'equipe puis je crée le <select> des joueurs
-fetch(`https://api-football-v1.p.rapidapi.com/v3/players?team=${id}&season=${annee}`, options)//39
-
-.then(response => response.json())
-.then((data) => {
-    console.log(id);
-    data.response.forEach(element => {
-
-                let select= `<select>`
-             
-                      document.getElementById("select-player").innerHTML += `<option> ${element.player.name} </option>`;
-                      select = `</select>`
-
-                      
-      })
-      
-})
-
-  }
-
-
-
-const btn = document.getElementById("btn");
-
-   btn.addEventListener("click", () => {
-
-     
-
-    
-    fetch(`https://api-football-v1.p.rapidapi.com/v3/players?team=${id}&season=2022`, options)
-    
         .then(response => response.json())
         .then((data) => {
+            console.log(data.response);
+            data.response.forEach(element => {
+                let select = `<select>`
+                id = document.getElementById("select-team").value;
+
+                document.getElementById("select-team").innerHTML += ` <option value="${element.team.id}"> ${element.team.name} </option>`;
+                document.getElementById("logo").logo += ` <option value="${element.team.id}"> ${element.team.name} </option>`;
+                select = `</select>`
 
 
-           
-            let affichage =``
-            let age =``
-            let im =``
-            let logo =``
-            let nationality =``
-            let club =``
-            let weight =``
-            let height =``
-
-    for( let x of data.response)
-    {
-        let input = document.getElementById("select-player");
-         if(input.value === x.player.name)
-         {
+            })
+        })
 
 
-            affichage = `<strong>${x.player.name}</strong>`
-            age = `<strong>${x.player.age} ans</strong>`
-            nationality = `<strong>${x.player.nationality}</strong>`
-            weight = `<strong>${x.player.weight}</strong>`
-            height = `<strong>${x.player.height}</strong>`
-            im = x.player.photo
-
-         }
+    function myFunction() {
+        id = document.getElementById("select-team").value;
+        console.log(`https://api-football-v1.p.rapidapi.com/v3/players?team=${id}&season=${annee}`);
 
 
-         else(input.value === x.statistics.team) 
-         {
-            logo = x.statistics[0].team.logo
-            club = `<strong>${x.statistics[0].team.name}</strong>`
+        // apres un changement dans le select d'equipe, je recupere l'id de l'equipe puis je crée le <select> des joueurs
+        fetch(`https://api-football-v1.p.rapidapi.com/v3/players?team=${id}&season=${annee}`, options)//39
 
-        }
+            .then(response => response.json())
+            .then((data) => {
+                console.log(id);
+                data.response.forEach(element => {
+
+                    let select = `<select>`
+
+                    document.getElementById("select-player").innerHTML += `<option> ${element.player.name} </option>`;
+                    select = `</select>`
+
+
+                })
+
+            })
 
     }
-    affichage +=`</ul>`
-    document.getElementById("namme").innerHTML = affichage;
-    document.getElementById("age").innerHTML = age;
-    document.getElementById("img").src = im;
-    document.getElementById("logo").src = logo;
-    document.getElementById('nationality').innerHTML = nationality;
-    document.getElementById('weight').innerHTML = weight;
-    document.getElementById('height').innerHTML = height;
-    document.getElementById('club').innerHTML = club;
 
-        })
-    })
 
-    </script>
-   
+
+    const btn = document.getElementById("btn"); // Récupère l'élément HTML avec l'ID "btn"
+
+    // Ajoute un gestionnaire d'événement "click" au bouton
+    btn.addEventListener("click", () => {
+
+        // Effectue une requête HTTP à l'API de football
+        fetch(`https://api-football-v1.p.rapidapi.com/v3/players?team=${id}&season=2022`, options)
+            .then(response => response.json()) // Transforme la réponse en JSON
+            .then((data) => {
+
+                // Déclare les variables qui seront utilisées pour afficher les données
+                let affichage = ``
+                let age = ``
+                let im = ``
+                let logo = ``
+                let nationality = ``
+                let club = ``
+                let weight = ``
+                let height = ``
+
+                // Parcoure les données de la réponse
+                for (let x of data.response) {
+                    // Récupère la valeur sélectionnée dans le menu déroulant
+                    let input = document.getElementById("select-player");
+
+                    // Si la valeur sélectionnée est le nom du joueur
+                    if (input.value === x.player.name) {
+                        // Met à jour les variables avec les données du joueur
+                        affichage = `<strong>${x.player.name}</strong>`
+                        age = `<strong>${x.player.age} ans</strong>`
+                        nationality = `<strong>${x.player.nationality}</strong>`
+                        weight = `<strong>${x.player.weight}</strong>`
+                        height = `<strong>${x.player.height}</strong>`
+                        im = x.player.photo
+                    }
+
+                    // Si la valeur sélectionnée est le nom du club
+                    else (input.value === x.statistics.team)
+                    {
+                        // Met à jour les variables avec les données du club
+                        logo = x.statistics[0].team.logo
+                        club = `<strong>${x.statistics[0].team.name}</strong>`
+                    }
+                }
+
+                // Met à jour les éléments HTML avec les données obtenues
+                affichage += `</ul>`
+                document.getElementById("namme").innerHTML = affichage;
+                document.getElementById("age").innerHTML = age;
+                document.getElementById("img").src = im;
+                document.getElementById("logo").src = logo;
+                document.getElementById('nationality').innerHTML = nationality;
+                document.getElementById('weight').innerHTML = weight;
+                document.getElementById('height').innerHTML = height;
+                document.getElementById('club').innerHTML = club;
+            })
+    });
+
