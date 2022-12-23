@@ -24,9 +24,14 @@ path
 engine 
 express-handlebars
 
-Vous pouvez utiliser la commande suivante pour tout installer 👉 :   ![Capture d’écran 2022-12-19 095531](https://user-images.githubusercontent.com/98484915/208386538-06018ebd-0e2a-4aab-8c84-67c406413095.png)
+*npm qui veut dire : "node package manager"
+
+Vous pouvez utiliser la commande suivante pour tout installer 👉 :  
+
+![Capture d’écran 2022-12-19 095531](https://user-images.githubusercontent.com/98484915/208386538-06018ebd-0e2a-4aab-8c84-67c406413095.png)
 
 Et pour finir faite un "npm start" 👇 :
+
 
 ![Capture d’écran 2022-12-19 095755](https://user-images.githubusercontent.com/98484915/208386871-dd7056bf-e986-44ce-a3f6-6879df55d496.png)
 
